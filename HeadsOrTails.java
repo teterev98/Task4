@@ -1,18 +1,19 @@
 import java.util.Random;
 
 public class HeadsOrTails {
+    
+    public static final int RANDOM_TIMES = 100;
+    
     public static void main(String[] args) {
-        rollCoin(1000);
-
+        
     }
 
     public static void rollCoin(int numberOfRolls) {
         int headsCount = 0;
         int tailsCount = 0;
         int coin;
-        Random random = new Random();
         for (int i = 0; i < numberOfRolls; i++){
-            coin = random.nextInt(100);
+            coin = new Random().nextInt(RANDOM_TIMES);
             if (coin % 2 ==0) {
                 headsCount++;
             }
