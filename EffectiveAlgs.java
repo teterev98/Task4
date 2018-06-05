@@ -4,10 +4,10 @@ public class EffectiveAlgs {
     }
 
     public static int findMaxDigit(int n) {
-        int digit = n % 10;
-        int maxDigit = digit;
+        int maxDigit = 0;
         while (n > 0) {
-            digit = (n /= 10) % 10;
+            int digit = n % 10;
+            n /= 10;
             if (maxDigit < digit) {
                 maxDigit = digit;
             }
@@ -25,7 +25,7 @@ public class EffectiveAlgs {
         for (int i = 0; i < digs / 2; i++) {
             rightDigit = n % 10;
             leftDigit = (int) (n / (Math.pow(10, (getNumberOfDigits(n) - 1))));
-            n = (int) (n - leftDigit * Math.pow(10, (getNumberOfDigits(n) - 1))) / 10;
+            n = (int) (n - leftDigit * Math.pow(10, (getNumberOfDigits(n) - 1))) / 10;  // Delete first and last digit of the number
             if (rightDigit != leftDigit) {
                 answer = false;
                 break;
@@ -56,7 +56,7 @@ public class EffectiveAlgs {
         return ans;
     }
 
-    public static void findPrimeD(int n) {
+    public static void findPrimeDenominators(int n) {
         for (int i = 2; i < n / i; i++) {
             if (isPrime(i)) {
                 if (n % i == 0) {
@@ -82,20 +82,18 @@ public class EffectiveAlgs {
     }
 
     public static int countDiferentDigs(int n) {
-        int numberOfDifdigs = 0;
-        int digit;
+        int counterOfDifdigs = 0;
         int n2 = n;
         for (int i = 0; i < 10; i++) {
             n = n2;
             while (n > 0) {
-                digit = n % 10;
-                n /= 10;
-                if (i == digit) {
-                    numberOfDifdigs++;
+                if (i == n % 10) {
+                    counterOfDifdigs++;
                     break;
                 }
+                n /= 10;
             }
         }
-        return numberOfDifdigs;
+        return counterOfDifdigs;
     }
 }
