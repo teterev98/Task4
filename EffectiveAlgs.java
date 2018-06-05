@@ -21,6 +21,7 @@ public class EffectiveAlgs {
     public static boolean isPalendrom(int n) {
         int rightDigit, leftDigit;
         boolean answer = true;
+        n = Math.abs(n);
         int digs = getNumberOfDigits(n);
         for (int i = 0; i < digs / 2; i++) {
             rightDigit = n % 10;
@@ -37,6 +38,7 @@ public class EffectiveAlgs {
 
     public static int getNumberOfDigits(int n) {
         int numberOfDigits = 0;
+        n = Math.abs(n);
         while (n > 0) {
             numberOfDigits++;
             n /= 10;
@@ -47,6 +49,9 @@ public class EffectiveAlgs {
 
     public static boolean isPrime(int n) {
         boolean ans = true;
+        if (n < 0) {
+            return false;
+        }
         for (int i = 2; i <= n / 2; i++) {
             if (n % i == 0) {
                 ans = false;
